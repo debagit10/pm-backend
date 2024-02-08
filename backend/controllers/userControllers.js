@@ -41,6 +41,7 @@ const login = async (req, res) => {
     const users = await pool.query("SELECT * FROM users WHERE email = $1", [
       email,
     ]);
+    console.log(users);
     if (!users.rows.length) {
       res.send({ error: "This user does not exist" });
     }
