@@ -10,7 +10,15 @@ const commentRoutes = require("./routes/commentRoutes");
 const PORT = process.env.SERVER_PORT || 5000;
 
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: "https://project-manager-wine.vercel.app", // Allow requests only from this origin
+  methods: ["GET", "POST", "PUT", "DELETE", "UPDATE"], // Allow only specified HTTP methods
+  allowedHeaders: ["Content-Type"], // Allow only specified headers
+};
+
+// Use the CORS middleware with options
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
