@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const nodemailer = require("nodemailer");
 
-const { EMAIL, PASSWORD } = process.env;
+const { EMAIL, PASSWORD, CLIENT_URL } = process.env;
 
 const projectReport = async (req, res) => {
   const {
@@ -59,7 +59,7 @@ const projectReport = async (req, res) => {
           to: itemEmail, // list of receivers
           subject: "New report", // Subject line
           text: ``, // plain text body
-          html: `There's a report for project: ${title} on team: ${team} Check the report http://localhost:3000`, // html body
+          html: `There's a report for project: ${title} on team: ${team} Check the report ${CLIENT_URL} `, // html body
         };
 
         transporter.sendMail(message);
@@ -87,7 +87,7 @@ const projectReport = async (req, res) => {
           to: itemEmail, // list of receivers
           subject: "Update on a report", // Subject line
           text: ``, // plain text body
-          html: `There has been an update on the report for project: ${title} on team: ${team} Check the report http://localhost:3000`, // html body
+          html: `There has been an update on the report for project: ${title} on team: ${team} Check the report ${CLIENT_URL}`, // html body
         };
 
         transporter.sendMail(message);

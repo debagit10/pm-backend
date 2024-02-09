@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 
 require("dotenv").config();
 
-const { EMAIL, PASSWORD } = process.env;
+const { EMAIL, PASSWORD, CLIENT_URL } = process.env;
 
 const addProject = async (req, res) => {
   const {
@@ -60,7 +60,7 @@ const addProject = async (req, res) => {
         to: itemEmail, // list of receivers
         subject: "New project", // Subject line
         text: `You've been assigned a new project on team: ${team}`, // plain text body
-        html: `Check the project http://localhost:3000`, // html body
+        html: `Check the project ${CLIENT_URL}`, // html body
       };
 
       transporter.sendMail(message);
